@@ -6,7 +6,7 @@ class VolenteerService extends BaseService{
     }
 
     async getAll(){
-        let volenteer =await this.VolenteerRepo.getAll();
+        let volenteer = await this.VolenteerRepo.getAll();
         return volenteer;
     }
 }

@@ -6,8 +6,15 @@ class BaseController{
     }
 
     async getAll(req, res, next){
-        const response = this.service.getAll();
-        return res.status(200).json(response);
+        try {
+            const filters = req.query;
+            const response = await this.service.getAll(filters);
+            return res.status(200).json(response);
+        }
+        catch (e) {
+            console.log('error in base controller')
+            next(e);
+        }
     }
 }
 export default BaseController;
