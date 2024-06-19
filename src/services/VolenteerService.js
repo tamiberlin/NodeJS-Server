@@ -4,10 +4,5 @@ class VolenteerService extends BaseService{
     constructor(VolenteerRepo){
         super(VolenteerRepo);
     }
-
-    async getAll(){
-        let volenteer = await this.VolenteerRepo.getAll();
-        return volenteer;
-    }
 }
 export default new VolenteerService(VolenteerRepo);

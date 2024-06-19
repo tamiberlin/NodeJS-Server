@@ -1,11 +1,17 @@
-// const mongoose = require('mongoose');
+import { configDotenv } from 'dotenv';
 import mongoose from 'mongoose';
+configDotenv();
+mongoose.set("strictQuery", false);
 connectToMongo().catch(err => console.log(err));
 export default async function connectToMongo() {
-//the connect function of mongoose get the connection string to local or remote db
-await mongoose.connect(
-'mongodb+srv://volenteer:v123456@cluster0.rolztbj.mongodb.net/'
-// process.env.MONGO_URI
-);
-console.log('connect!!')
+try{
+await mongoose.connect(process.env.MONGO_URI);
+console.log('connect!!');
+}
+catch(error){
+console.log(error);
+throw new Error("failed to connect to database");
+}
+    
+
 }
