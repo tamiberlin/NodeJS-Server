@@ -2,8 +2,8 @@ import connectToMongo from "../../config/mongoConnect.js";
 import Volenteer from "../models/volenteer.js";
 
 
-class VolenteerRepo{
-    constructor(model){
+class VolenteerRepo {
+    constructor(model) {
         this.model = model;
         connectToMongo();
     }
@@ -12,6 +12,8 @@ class VolenteerRepo{
     async getAll() {
         return this.model.find({}).exec();
     }
+
+
     async getById(id) {
         try {
             let item = await this.model.findById(id);
@@ -26,6 +28,8 @@ class VolenteerRepo{
             throw (errors);
         }
     }
+
+
     async add(item) {
         try {
             let vol = await this.model.create(item);
@@ -38,26 +42,14 @@ class VolenteerRepo{
     }
 
 
-//     async getAll(filters){
-//         const smallpipe = filterByParams(filters);
-//         const bigpipe = pipeline(smallpipe);
-//         let fullrequest = await this.model.aggregate(bigpipe).exec();
-//         console.log(fullrequest);
-//         return fullrequest;
-//     }
-
-//     async getById(id){
-//         try{
-//             const smallPipe = filterbyId(id);
-//             const bigpipe = pipeline(smallPipe);
-//             let request = await this.model.aggregate(bigpipe).exec();
-//             return request;
-//         }
-//         catch(error){
-//             console.log(error)
-//             throw new Error('An error occurred while retrieving the request. Please try again later');
-//         }
-//     }
+    // async getAll(filters) {
+    //     const smallpipe = filterByParams(filters);
+    //     const bigpipe = pipeline(smallpipe);
+    //     let fullrequest = await this.model.aggregate(bigpipe).exec();
+    //     console.log(fullrequest);
+    //     return fullrequest;
+    // }
 }
+
 
 export default new VolenteerRepo(Volenteer);

@@ -49,15 +49,17 @@ class HelpRequestRepo {
     //       throw error;
     //     }
     //   }
-      async update(id, item) {
-    try {
-        let result = await this.model.findByIdAndUpdate(Number(id), item);
-        return result;
+
+
+    async update(id, item) {
+        try {
+            let result = await this.model.findByIdAndUpdate(Number(id), item);
+            return result;
+        }
+        catch (errors) {
+            throw new Error('it is not possible to update, please try again');
+        }
     }
-    catch (errors) {
-        throw new Error('it is not possible to update, please try again');
-    }
-}
 
 }
 

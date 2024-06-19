@@ -1,5 +1,4 @@
 import { configDotenv } from "dotenv";
-import dotenv from 'dotenv';
 import express from 'express';
 
 import VolenteerRouter from './src/routes/VolenteerRouter.js';
@@ -8,7 +7,7 @@ const app = express();
 configDotenv();
 const server = express();
 const hostname = process.env.hostname || 'localhost';
-const port = process.env.port;
+const port = process.env.port || 3000;
 
 
 server.use(express.json());

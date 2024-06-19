@@ -1,6 +1,7 @@
 class BaseService{
     constructor(repo){
         this.repo = repo;
+        
     }
 
     async getAll(filters){

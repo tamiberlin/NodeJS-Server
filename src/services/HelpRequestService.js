@@ -5,9 +5,11 @@ class HelpRequestService extends BaseService{
         super(HelpRequestRepo);
     }
 
-    // async getAll(){
-    //     let volenteer = await this.VolenteerRepo.getAll();
-    //     return volenteer;
-    // }
+    async add(data){
+        return await this.HelpRequestRepo.add(data);
+    }
+    async update(id, data){
+        return await this.HelpRequestRepo.update(id, data); 
+    }
 }
 export default new HelpRequestService(HelpRequestRepo);
