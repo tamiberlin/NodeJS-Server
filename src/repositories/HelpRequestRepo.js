@@ -29,14 +29,18 @@ class HelpRequestRepo {
                 ourPipeline.push({ $match: { statuses: "waiting" } }, { $match: query });
 
             }
-            const results = await this.model.aggregate(ourPipeline).exec();
-            console.log(results);
-            return results;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            throw error;
-        }
-    }
+            const pipeline = [];
+                Object.keys(query).length > 0 ? pipeline.push({ $match: query }) : pipeline.push({ $match: { status: "W" } })
+                ourPipeline.push(pipeline);
+                const results = await this.model.aggregate(ourPipeline).exec();
+                console.log(results);
+                return results;
+              } catch (error) {
+                console.error('Error fetching data:', error);
+                throw error;
+              }
+            }
+          
 
 
 
