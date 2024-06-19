@@ -4,6 +4,7 @@ import helpRequestsController from '../controllers/helpRequestsController.js';
 const router = express.Router();
 
 router.get('/', helpRequestsController.getAll);
+router.get('/:id', helpRequestsController.getById)
 
 //  async(req, res)=>{
     // try{

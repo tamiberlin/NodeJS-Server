@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const HelpRequestSchema = new Schema({
-    _id:String,
+    _id:Number,
     volenteerCode:Number,
     impotranceCode:Number,
     phoneNumber:String,
@@ -11,5 +11,5 @@ const HelpRequestSchema = new Schema({
     locationCode:Number
 }, {versionKey:false})
 
-const HelpRrquest = mongoose.model("HelpRrquest", HelpRequestSchema, 'helpRequst');
+const HelpRrquest = mongoose.model("helprequests", HelpRequestSchema, "helprequests");
 export default HelpRrquest;
