@@ -4,11 +4,11 @@ import BaseController from "./BaseController.js";
 class VolenteersController extends BaseController{
     constructor(VolenteerService){
         super(VolenteerService);
-        this.name = "volenteer";
+        // this.name = "volenteer";
     }
     async add(req, res, next) {
         try {
-            const response = await this.service.add(req.body);
+            const response = await this.VolenteerService.add(req.body);
             return res.status(200).json(response);
         }
         catch (e) {

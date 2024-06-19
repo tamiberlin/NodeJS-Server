@@ -12,12 +12,11 @@ class BaseController {
             return res.status(200).json(response);
         }
         catch (e) {
-            // console.log('error in base controller')
             next(e);
         }
     }
     async getById(req, res, next) {
-        const { id } = req.params;
+        const id = req.params.id;
         try {
             const response = await this.service.getById(id);
             return res.status(200).json(response);

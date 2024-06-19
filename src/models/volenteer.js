@@ -9,5 +9,5 @@ const VolenteerSchema = new Schema({
     abilities:Array
 }, {versionKey:false})
 
-const Volenteer = mongoose.model("Volenteers", VolenteerSchema, 'volenteers');
+const Volenteer = mongoose.model("volenteers", VolenteerSchema, "volenteers");
 export default Volenteer;

@@ -2,21 +2,22 @@ import connectToMongo from "../../config/mongoConnect.js";
 import Volenteer from "../models/volenteer.js";
 
 
+
 class VolenteerRepo {
-    constructor(model) {
-        this.model = model;
+    constructor(Volenteer) {
+        this.Volenteer = Volenteer;
         connectToMongo();
     }
 
 
     async getAll() {
-        return this.model.find({}).exec();
+        return this.Volenteer.find({}).exec();
     }
 
 
     async getById(id) {
         try {
-            let item = await this.model.findById(id);
+            let item = await this.Volenteer.findById(id);
             if (!item) {
                 let error = new Error('There is no data for this request');
                 error.code = 404;

@@ -4,8 +4,8 @@ class BaseService{
         
     }
 
-    async getAll(filters){
-        return await this.repo.getAll(filters);
+    async getAll(params){
+        return await this.repo.getAll(params);
     }
 
     async getById(id){

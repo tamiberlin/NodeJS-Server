@@ -11,5 +11,5 @@ const HelpRequestSchema = new Schema({
     locationCode:Number
 }, {versionKey:false})
 
-const HelpRrquest = mongoose.model("helprequests", HelpRequestSchema/*, "helprequests"*/);
+const HelpRrquest = mongoose.model("helprequests", HelpRequestSchema, "helprequests");
 export default HelpRrquest;
