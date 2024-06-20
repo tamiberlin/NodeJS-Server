@@ -1,5 +1,5 @@
 import connectToMongo from "../../config/mongoConnect.js";
-import HelpRrquest from "../models/helpRequest.js";
+import model from "../models/helpRequest.js";
 import filters from "../files/filter.js";
 import buildPipe from "../files/pipeline.js";
 import { byId } from "../files/filter.js";
@@ -47,4 +47,4 @@ class HelpRequestRepo {
 
 }
 
-export default new HelpRequestRepo(HelpRrquest);
+export default new HelpRequestRepo(model);

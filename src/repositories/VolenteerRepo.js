@@ -1,40 +1,33 @@
 import connectToMongo from "../../config/mongoConnect.js";
-import Volenteer from "../models/volenteer.js";
-
-
+import model from "../models/volenteer.js";
+import { byId } from "../files/filter.js";
 
 class VolenteerRepo {
-    constructor(Volenteer) {
-        this.Volenteer = Volenteer;
+    constructor(model) {
+        this.model = model;
         connectToMongo();
     }
 
-
     async getAll() {
-        return this.Volenteer.find({}).exec();
+        return this.model.find({}).exec();
     }
-
-
     async getById(id) {
         try {
-            let item = await this.Volenteer.findById(id);
-            if (!item) {
-                let error = new Error('There is no data for this request');
-                error.code = 404;
-                throw error;
-            }
-            return item;
-        }
-        catch (errors) {
-            throw (errors);
+            
+            const smallPipe = byId(id);
+            console.log('smallpipe:', smallPipe); // debugging line
+            let req = await this.model.aggregate(smallPipe).exec(); 
+            console.log('req:', req); // debugging line
+            return req;
+        } catch (errors) {
+            throw errors;
         }
     }
-
-
-    async add(item) {
+    async add(data) {
         try {
-            let vol = await this.model.create(item);
-            console.log(vol);
+            let vol = await this.model.create(data);
+            // this.model.add(vol);
+            console.log('voll:', vol); // debugging line
             return vol;
         }
         catch (errors) {
@@ -42,15 +35,7 @@ class VolenteerRepo {
         }
     }
 
-
-    // async getAll(filters) {
-    //     const smallpipe = filterByParams(filters);
-    //     const bigpipe = pipeline(smallpipe);
-    //     let fullrequest = await this.model.aggregate(bigpipe).exec();
-    //     console.log(fullrequest);
-    //     return fullrequest;
-    // }
 }
 
 
-export default new VolenteerRepo(Volenteer);
+export default new VolenteerRepo(model);

@@ -1,15 +1,16 @@
-import VolenteerRepo from "../repositories/VolenteerRepo.js";
+import model from "../repositories/VolenteerRepo.js";
 import BaseService from "./BaseService.js";
 
+console.log('Model imported:', model); // debug line
 
 class VolenteerService extends BaseService{
-    constructor(VolenteerRepo){
-        super(VolenteerRepo);
+    constructor(model){
+        super(model);
     }
 
     async add(data){
-    return await this.VolenteerRepo.add(data);
+    return await this.model.add(data);
     }
 }
 
-export default new VolenteerService(VolenteerRepo);
+export default new VolenteerService(model);

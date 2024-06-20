@@ -1,14 +1,14 @@
 import autoBind from "auto-bind";
 class BaseController {
-    constructor(service) {
-        this.service = service;
+    constructor(model) {
+        this.model = model;
         autoBind(this);
     }
 
     async getAll(req, res, next) {
         try {
             const filters = req.query;
-            const response = await this.service.getAll(filters);
+            const response = await this.model.getAll(filters);
             return res.status(200).json(response);
         }
         catch (e) {
@@ -18,7 +18,7 @@ class BaseController {
     async getById(req, res, next) {
         const id = req.params.id;
         try {
-            const response = await this.service.getById(id);
+            const response = await this.model.getById(id);
             return res.status(200).json(response);
 
         }

@@ -1,18 +1,18 @@
-import HelpRequestRepo from "../repositories/HelpRequestRepo.js";
+import model from "../repositories/HelpRequestRepo.js";
 import BaseService from "./BaseService.js";
 
 class HelpRequestService extends BaseService{
-    constructor(HelpRequestRepo){
-        super(HelpRequestRepo);
+    constructor(model){
+        super(model);
     }
 
-    // async add(data){
-    //     return await this.HelpRequestRepo.add(data);
-    // }
+    async add(data){
+        return await this.model.add(data);
+    }
 
     async update(id, data){
         try{
-            return await this.HelpRequestRepo.update(id, data);  
+            return await this.model.update(id, data);  
         }
         catch(errors){
             throw new Error("couldnt update request")
@@ -20,4 +20,4 @@ class HelpRequestService extends BaseService{
         
     }
 }
-export default new HelpRequestService(HelpRequestRepo);
+export default new HelpRequestService(model);

@@ -7,7 +7,7 @@ const app = express();
 configDotenv();
 const server = express();
 const hostname = process.env.hostname || 'localhost';
-const port = process.env.port || 3000;
+const port = process.env.port || 3001;
 
 
 server.use(express.json());

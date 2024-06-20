@@ -1,16 +1,16 @@
-import HelpRequestService from "../services/HelpRequestService.js";
+import model from "../services/HelpRequestService.js";
 import BaseController from "./BaseController.js";
 
 class HelpRequestsController extends BaseController{
-    constructor(HelpRequestService){
-        super(HelpRequestService);
+    constructor(model){
+        super(model);
         // this.name = "HelpRequest";
     }
     
     async update(req, res, next) {
         const  id = req.params;
         try {
-            const response = await this.service.update(id, req.body);
+            const response = await this.model.update(id, req.body);
             return res.status(200).json(response);
         }
         catch (e) {
@@ -18,7 +18,7 @@ class HelpRequestsController extends BaseController{
         }
     }
 }
-export default new HelpRequestsController(HelpRequestService);
+export default new HelpRequestsController(model);
 
 
 
